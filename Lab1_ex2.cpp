@@ -10,6 +10,34 @@ bool GetIntegerArrayMetrics( const int *array,
                              int& min_val,
                              size_t& max_pos,
                              int& max_val );
+bool GetIntegerArrayMetrics( const int *array,
+                             const size_t array_size,
+                             size_t& min_pos,
+                             int& min_val,
+                             size_t& max_pos,
+                             int& max_val )
+{
+	if(array == NULL){
+		return false;
+	}
+	min_val = *array;
+	min_pos = 0;
+	max_val = *array;
+	min_pos = 0;
+	for(int i = 1; i < array_size; ++i){
+		++array;
+		int current = *array;
+		if(current < min_val){
+			min_pos = i;
+			min_val = current;
+		}
+		if(current > max_val){
+			max_pos = i;
+			max_val = current;
+		}
+	}
+	return true;
+}
 
 int main(int argc, char* argv[])
 {

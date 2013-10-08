@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
 		std::cout << "Input width of a rectangle.\n";
 		std::cin >> width;
 	}while(width>=20000 and width <= 1);
+	std::cout << width;
     int height;
 	do{
 		std::cout << "Input height of a rectangle.\n";
