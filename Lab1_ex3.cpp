@@ -1,6 +1,7 @@
+#include <cctype>
 #include <cassert>
 #include <cstring>
-
+#include <stdexcept>
 #include <iostream>
 using namespace std;
 
@@ -32,5 +33,19 @@ int main(int argc, char* argv[])
 
 void ChangeHateToLove(char* pString)
 {
-    // do stuff in here...
+	if(pString == NULL)
+	{
+		throw std::invalid_argument("Did you give an empty string?");
+	}
+	while(*pString != '\0')
+	{
+		if(strncmp(pString, "hate", 4) == 0 ){
+			if (!isalpha(*(pString+4))){
+				strncpy(pString, "love", 4);
+				pString += 4;
+			}
+		}
+		++pString;
+	}
 }
+
